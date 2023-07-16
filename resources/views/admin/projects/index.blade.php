@@ -12,7 +12,8 @@
         </div>
     @endif
 
-    <table class="table align-middle">
+    <h1 class="fs-2 text-primary border-bottom border-primary border-2 p-2"> Project </h1>
+    <table class="table align-middle mt-5">
         <thead>
             <tr>
                 <th scope="col" class="text-center">Title</th>
