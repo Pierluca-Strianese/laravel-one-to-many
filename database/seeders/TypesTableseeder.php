@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\Type;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class CategoriesTableseeder extends Seeder
+class TypesTableseeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,8 @@ class CategoriesTableseeder extends Seeder
      */
     public function run()
     {
-        foreach (config('categories') as $objCategory) {
-            Category::create($objCategory);
+        foreach (config('types') as $objType) {
+            Type::create($objType);
         }
     }
 }
