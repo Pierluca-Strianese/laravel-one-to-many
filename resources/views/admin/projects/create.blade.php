@@ -3,13 +3,11 @@
 @section('contents')
     <h1 class="text-primary border-bottom border-primary p-2">Add new Project</h1>
     <section class="container-sm bg-body-secondary p-4 my-4 rounded">
-
         <form method="POST" action="{{ route('admin.project.store') }}" novalidate>
             @csrf
-
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-controlphpitle') is-invalid @enderror" id="title" name="title"
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
                     value="{{ old('title') }}">
 
                 <div class="invalid-feedback">

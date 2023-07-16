@@ -66,7 +66,7 @@ class ProjectController extends Controller
         $newProject->link_github = $data['link_github'];
         $newProject->save();
 
-        return redirect()->route('admin.project.show', ['project' => $newProject->id]);
+        return redirect()->route('Admin.project.show', ['project' => $newProject]);
     }
 
     /**
