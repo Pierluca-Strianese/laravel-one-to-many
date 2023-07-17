@@ -28,7 +28,9 @@
             @foreach ($projects as $project)
                 <tr>
                     <th scope="row">{{ $project->title }}</th>
-                    <td>{{ $project->type->name }}</td>
+                    <td><button type="button" class="btn btn-light"><a class="text-decoration-none"
+                                href="{{ route('admin.types.show', ['type' => $project->type]) }}">{{ $project->type->name }}</button>
+                    </td>
                     <td>{{ $project->author }}</td>
                     <td class="font-monospace">{{ $project->last_update }}</td>
                     <td>{{ $project->description }}</td>

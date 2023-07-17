@@ -3,25 +3,27 @@
 @section('contents')
     <section>
 
-        <h1 class="text-primary border-bottom border-primary p-2"> {{ $project->title }} </h1>
-        <h2> Type: {{ $project->type->name }}</h2>
-
-        <h2 class="font-size-4"> {{ $project->author }} </h2>
-        <h3>Collaborators: {{ $project->collaborators }}</h3>
-        <h3 class="text-primary border-bottom border-primary"> {{ $project->languages }} </h3>
+        <h1 class="text-primary border-bottom border-primary p-2"> {{ $type->name }} </h1>
 
     </section>
 
     <section>
 
-        <p class="p-3"> {{ $project->description }} </p>
+        <p class="p-3"> {{ $type->description }} </p>
 
     </section>
 
     <section>
 
-        <p class="border-top"> Date creation:{{ $project->creation_date }} </p>
-        <p> Last Update:{{ $project->last_update }} </p>
+        <h2> Project in {{ $type->name }}</h2>
+
+    </section>
+
+    <section>
+
+        @foreach ($type->projects()->orderBy('created_at', 'DESC')->limit(3)->get() as $project)
+            <li><a href="{{ route('admin.project.show', ['project' => $project]) }}">{{ $project->title }}</a></li>
+        @endforeach
 
     </section>
 @endsection
