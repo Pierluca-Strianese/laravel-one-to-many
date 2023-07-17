@@ -164,4 +164,13 @@ class ProjectController extends Controller
 
         return to_route('admin.project.trashed')->with('delete_success', $project);
     }
+
+    public function cancel($id)
+    {
+        Project::withTrashed()->where('id', $id)->restore();
+
+        $project = Project::find($id);
+
+        return to_route('admin.project.index')->with('cancel_success', $project);
+    }
 }
