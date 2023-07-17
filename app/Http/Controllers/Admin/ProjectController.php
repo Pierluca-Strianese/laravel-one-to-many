@@ -92,7 +92,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project','types'));
     }
 
     /**
@@ -110,17 +111,18 @@ class ProjectController extends Controller
 
         // Salvare i dati nel database
         $newProject = new Project();
-        $newProject->title = $data['title'];
-        $newProject->author = $data['author'];
-        $newProject->creation_date = $data['creation_date'];
-        $newProject->last_update = $data['last_update'];
-        $newProject->collaborators = $data['collaborators'];
-        $newProject->description = $data['description'];
-        $newProject->languages = $data['languages'];
-        $newProject->link_github = $data['link_github'];
+        $newProject->title              = $data['title'];
+        $newProject->type_id            = $data['type_id'];
+        $newProject->author             = $data['author'];
+        $newProject->creation_date      = $data['creation_date'];
+        $newProject->last_update        = $data['last_update'];
+        $newProject->collaborators      = $data['collaborators'];
+        $newProject->description        = $data['description'];
+        $newProject->languages          = $data['languages'];
+        $newProject->link_github        = $data['link_github'];
         $newProject->update();
 
-        return redirect()->route('admin.project.show', ['project' => $newProject]);
+        return to_route('admin.project.show', ['project' => $newProject]);
     }
 
     /**
