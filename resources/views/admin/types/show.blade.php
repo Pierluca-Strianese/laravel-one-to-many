@@ -28,7 +28,5 @@
             @endforeach
         </ul>
 
-
-
     </section>
 @endsection
