@@ -2,7 +2,7 @@
 
 @section('contents')
     <h1 class="text-primary border-bottom border-primary p-2">Add new Project</h1>
-    <section class="container-sm bg-body-secondary p-4 my-4 rounded">
+    <section class="container-sm bg-body-secondary p-4 my-4 rounded col-8">
         <form method="POST" action="{{ route('admin.project.store') }}" enctype="multipart/form-data" novalidate>
             @csrf
 

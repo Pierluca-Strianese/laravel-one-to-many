@@ -37,7 +37,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('admin.types.index') }}">Index</a></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.types.create') }}">New Project</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.types.create') }}">New type</a></li>
                     </ul>
                 </li>
             </ul>
@@ -52,11 +52,10 @@
                             <a class="dropdown-item" href="{{ route('admin.profile.edit') }}">Edit profile</a>
                         </li>
 
-                        <li class="m-2">
-                            <form action="{{ route('logout') }}" method="post">
+                        <li>
+                            <form class="dropdown-item" action="{{ route('logout') }}" method="post">
                                 @csrf
-                                <button type="button" class="btn btn-dark">Logout</button>
-
+                                <button class="btn btn-dark">Logout</button>
                             </form>
                         </li>
                     </ul>

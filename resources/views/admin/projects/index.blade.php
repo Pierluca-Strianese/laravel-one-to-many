@@ -24,12 +24,12 @@
                 <th scope="col" class="text-center">Link Github</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
             @foreach ($projects as $project)
                 <tr>
                     <th scope="row">{{ $project->title }}</th>
                     <td><button type="button" class="btn btn-light"><a class="text-decoration-none"
-                                href="{{ route('admin.types.show', ['type' => $project->type]) }}">{{ $project->type->name }}</button>
+                                href="{{ route('admin.types.show', ['type' => $project->type]) }}">{{ $project->type->name }}</a></button>
                     </td>
                     <td>{{ $project->author }}</td>
                     <td class="font-monospace">{{ $project->last_update }}</td>

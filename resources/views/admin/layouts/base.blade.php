@@ -12,9 +12,11 @@
 
     @include('admin.includes.header')
 
-    <div class="container-xl">
+    <div class="container">
         <main>
-            @yield ('contents')
+            <section class="row justify-content-md-center">
+                @yield ('contents')
+            </section>
         </main>
     </div>
 
