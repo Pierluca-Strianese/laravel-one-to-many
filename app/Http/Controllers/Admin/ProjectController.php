@@ -11,6 +11,7 @@ class ProjectController extends Controller
 {
     private $validations = [
         'title'         => 'required|string|min:4|max:50',
+        'type_id'       => 'required|integer|exisist:types,id',
         'author'        => 'required|string|max:30',
         'creation_date' => 'required|date',
         'collaborators' => 'max:150',
@@ -58,17 +59,18 @@ class ProjectController extends Controller
 
         // Salvare i dati nel database
         $newProject = new Project();
-        $newProject->title = $data['title'];
-        $newProject->author = $data['author'];
-        $newProject->creation_date = $data['creation_date'];
-        $newProject->last_update = $data['last_update'];
-        $newProject->collaborators = $data['collaborators'];
-        $newProject->description = $data['description'];
-        $newProject->languages = $data['languages'];
-        $newProject->link_github = $data['link_github'];
+        $newProject->title              = $data['title'];
+        $newProject->type_id            = $data['type_id'];
+        $newProject->author             = $data['author'];
+        $newProject->creation_date      = $data['creation_date'];
+        $newProject->last_update        = $data['last_update'];
+        $newProject->collaborators      = $data['collaborators'];
+        $newProject->description        = $data['description'];
+        $newProject->languages          = $data['languages'];
+        $newProject->link_github        = $data['link_github'];
         $newProject->save();
 
-        return redirect()->route('Admin.project.show', ['project' => $newProject]);
+        return to_route('admin.project.show', ['project' => $newProject]);
     }
 
     /**

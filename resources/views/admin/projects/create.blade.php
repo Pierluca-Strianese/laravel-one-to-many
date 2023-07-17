@@ -3,7 +3,7 @@
 @section('contents')
     <h1 class="text-primary border-bottom border-primary p-2">Add new Project</h1>
     <section class="container-sm bg-body-secondary p-4 my-4 rounded">
-        <form method="POST" action="{{ route('admin.project.store') }}" novalidate>
+        <form method="POST" action="{{ route('admin.project.store') }}" enctype="multipart/form-data" novalidate>
             @csrf
 
             <div class="mb-3">
@@ -20,11 +20,18 @@
 
             <div class="mb-3">
                 <label for="type" class="form-label">Type</label>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select @error('type_id') is-invalid @enderror" aria-label="Default select example"
+                    id="type" name="type_id">
                     @foreach ($types as $type)
                         <option value="{{ $type->id }}">{{ $type->name }}</option>
                     @endforeach
                 </select>
+
+                <div class="invalid-feedback">
+                    @error('type_id')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
 
             <div class="mb-3">
