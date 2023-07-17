@@ -16,9 +16,9 @@
         <thead>
             <tr>
                 <th scope="col" class="text-center">Title</th>
+                <th scope="col" class="text-center">Type</th>
                 <th scope="col" class="text-center">Author</th>
                 <th scope="col" class="text-center">Last Update</th>
-                <th scope="col" class="text-center">Collaborators</th>
                 <th scope="col" class="text-center">Description</th>
                 <th scope="col" class="text-center">Languages</th>
                 <th scope="col" class="text-center">Link Github</th>
@@ -28,9 +28,9 @@
             @foreach ($projects as $project)
                 <tr>
                     <th scope="row">{{ $project->title }}</th>
+                    <td>{{ $project->type->name }}</td>
                     <td>{{ $project->author }}</td>
                     <td class="font-monospace">{{ $project->last_update }}</td>
-                    <td>{{ $project->collaborators }}</td>
                     <td>{{ $project->description }}</td>
                     <td class="font-monospace">{{ $project->languages }}</td>
                     <td class="text-center"> <a href="{{ $project->link_github }}"> LINK </a></td>

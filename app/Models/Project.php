@@ -10,4 +10,8 @@ class Project extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    public function type() {
+        return $this->belongsTo(Type::class);
+    }
 }

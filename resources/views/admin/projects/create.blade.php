@@ -5,6 +5,7 @@
     <section class="container-sm bg-body-secondary p-4 my-4 rounded">
         <form method="POST" action="{{ route('admin.project.store') }}" novalidate>
             @csrf
+
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
@@ -15,6 +16,15 @@
                         {{ $message }}
                     @enderror
                 </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="type" class="form-label">Type</label>
+                <select class="form-select" aria-label="Default select example">
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="mb-3">
