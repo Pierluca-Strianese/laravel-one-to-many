@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 
 class TypeController extends Controller
 {
+    private $validations = [
+        'name'         => 'required|string|max:50',
+        'description'  => 'required|string|max:1000',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +30,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.types.create');
     }
 
     /**
@@ -37,7 +41,16 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validations);
+        $data = $request->all();
+
+        // Salvare i dati nel database
+        $newType = new Type();
+        $newType->name = $data['name'];
+        $newType->description = $data['description'];
+        $newType->save();
+
+        return redirect()->route('admin.types.show', ['type' => $newType]);
     }
 
     /**
@@ -59,7 +72,7 @@ class TypeController extends Controller
      */
     public function edit(type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -71,7 +84,15 @@ class TypeController extends Controller
      */
     public function update(Request $request, type $type)
     {
-        //
+        $request->validate($this->validations);
+        $data = $request->all();
+
+        // Salvare i dati nel database
+        $type->name = $data['name'];
+        $type->description = $data['description'];
+        $type->update();
+
+        return redirect()->route('admin.types.show', ['type' => $type]);
     }
 
     /**
@@ -82,6 +103,8 @@ class TypeController extends Controller
      */
     public function destroy(type $type)
     {
-        //
+        $type->delete();
+
+        return to_route('admin.types.index')->with('delete_success', $type);
     }
 }
